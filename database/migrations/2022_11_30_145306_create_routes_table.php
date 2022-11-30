@@ -13,12 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('regions', function (Blueprint $table) {
+        Schema::create('routes', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->unique();
-            $table->foreignId('district_id')
-                ->nullable()
-                ->constrained();
+            $table->string('name');
+            $table->morphs('routeable');
             $table->timestamps();
         });
     }
@@ -30,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('region');
+        Schema::dropIfExists('routes');
     }
 };

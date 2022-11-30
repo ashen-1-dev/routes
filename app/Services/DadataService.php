@@ -26,13 +26,14 @@ class DadataService
                 ['body' => json_encode($query)])
                 ->getBody()
                 ->getContents();
-        } catch (\Throwable $exception) {
+        } catch (\Throwable) {
             return null;
         }
         return DadataApiResponse::collection(json_decode($result));
     }
 
-    private function baseClientConfig() {
+    private function baseClientConfig(): array
+    {
         return [
             'base_uri' => 'https://cleaner.dadata.ru',
             'headers' => [

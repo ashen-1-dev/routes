@@ -15,13 +15,17 @@ class CityService
         $this->dadataService = $dadataService;
     }
 
-    public function fillRegionAndDistrictInCities()
+    public function fillRegionAndDistrictInCities(): void
     {
         $cities = City::all();
         $dadataCities = $this->dadataService
             ->getStandardAddresses($cities
                 ->map(fn (City $city) => $city->name)
                 ->toArray());
+
+        if(isset($dadataCities)) {
+            return;
+        }
 
         foreach ($cities as $city) {
             $dadataCity = $dadataCities->where('source','=', $city->name)->first();

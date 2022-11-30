@@ -26,7 +26,7 @@ class FillRegionAndDistrictInCities extends Command
      *
      * @return int
      */
-    public function handle(CityService $cityService)
+    public function handle(CityService $cityService): void
     {
         try {
             $cityService->fillRegionAndDistrictInCities();
