@@ -9,6 +9,8 @@ class Region extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name', 'district_id'];
+
     public function cities()
     {
         return $this->hasMany(City::class);

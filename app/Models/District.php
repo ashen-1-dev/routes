@@ -9,6 +9,8 @@ class District extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name'];
+
     public function regions()
     {
         return $this->hasMany(Region::class);
