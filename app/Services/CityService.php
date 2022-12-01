@@ -23,7 +23,7 @@ class CityService
                 ->map(fn (City $city) => $city->name)
                 ->toArray());
 
-        if(isset($dadataCities)) {
+        if(!isset($dadataCities)) {
             return;
         }
 
