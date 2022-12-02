@@ -16,14 +16,9 @@ class DefaultRoutesSeeder extends Seeder
      */
     public function run()
     {
-        City::first()->routes()->create([
-            'name' => 'My Route 1'
-        ]);
-        Region::first()->routes()->create([
-            'name' => 'My Route 2'
-        ]);
-        District::first()->routes()->create([
-            'name' => 'My Route 3'
-        ]);
+        $cities = City::all()->take(10);
+        foreach ($cities as $i => $city) {
+            $city->routes()->create(['name' => 'My Route ' . $i]);
+        }
     }
 }
